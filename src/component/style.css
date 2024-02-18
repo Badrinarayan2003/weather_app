@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url("/public/images/weather_bg.jpg");
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    font-family: sans-serif;
+}
+
+.card {
+    width: 750px;
+    height: 650px;
+    /* border: 2px solid #fff; */
+    display: flex;
+}
+
+/* card one */
+
+.card-one {
+    width: 57%;
+    height: 100%;
+    background-image: url("/public/images/weather_bg1.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid black;
+}
+
+.card-one-fst-box {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    padding: 1rem;
+    gap: 0.3rem;
+}
+
+.card-one-snd-box {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.day {
+    font-size: 1.5rem;
+    padding: 0.3rem;
+}
+
+.dt {
+    padding: 0 0.3rem;
+}
+
+.card-one-temp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.7rem;
+}
+
+/* card two  */
+
+
+.card-two {
+    width: 43%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.7;
+}
+
+.img-box {
+    text-align: center;
+}
+
+.img-box img {
+    width: 8rem;
+    height: 8rem;
+    padding: 0.4rem;
+}
+
+.card-two h1 {
+    text-align: center;
+}
+
+.first-hr {
+    width: 85%;
+    margin: auto;
+    border: 1.5px solid #fff;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.search input {
+    width: 65%;
+    padding: .5rem;
+    background: transparent;
+    border: 1.5px solid #fff;
+    border-radius: 20px;
+    outline: none;
+    color: #fff;
+}
+
+.search input::placeholder {
+    color: #fff;
+}
+
+.search button {
+    width: 11.5%;
+    background: transparent;
+    border: 1.5px solid #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 1px;
+}
+
+.search button:hover {
+    border: 1.7px solid #fff;
+}
+
+.card-two h3 {
+    text-align: center;
+    margin: 1rem 0;
+    font-size: 1.5rem;
+}
+
+.hr-gr {
+    width: 85%;
+    margin: auto;
+}
+
+.card-two-temp {
+    display: flex;
+    justify-content: space-around;
+    padding: .5rem;
+    font-weight: 600;
+}
+
+.card-two-humidity {
+    display: flex;
+    justify-content: space-around;
+    padding: .5rem;
+    font-weight: 600;
+}
+
+.card-two-wind {
+    display: flex;
+    justify-content: space-around;
+    padding: .5rem;
+    font-weight: 600;
+}
+
+.error{
+    text-align: center;
+    color: rgb(115, 5, 5);
+    /* font-weight: 600; */
+}
