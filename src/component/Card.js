@@ -2,30 +2,33 @@ import './style.css';
 import React, { useState, useEffect } from 'react';
 
 
-
-
 function Card() {
-    const apiKey = "enter api key here"
-    const URL = "https://api.openweathermap.org/data/2.5/weather?&units=metric"
+    const URL = "https://api.openweathermap.org/data/2.5/weather?&units=metric&appid=20e5b9a12f3dfeccc2ee839291dc625e"
 
     const [weatherData, setWeatherData] = useState({})
     const [searchVal, setSearchVal] = useState("")
     const [errorMsg, setErrorMsg] = useState('')
-
-
+    const [secErrorMsg, setSecErrorMsg] = useState(false)
 
     useEffect(() => {
         getWeather("delhi")
     }, [])
 
+    const handleClick = () => {
+        getWeather(searchVal)
+        setSearchVal("")
+    }
 
     const getWeather = async (cityName) => {
 
         try {
-            const response = await fetch(`${URL}&appid=${apiKey}&q=${cityName}`)
+            const response = await fetch(`${URL}&q=${cityName}`)
             if (response.status === 404) {
-                alert("Oops! city not found")
-                getWeather("delhi")
+                setSecErrorMsg(true)
+                setTimeout(() => {
+                    setSecErrorMsg(false)
+                    getWeather("delhi")
+                }, 2000)
             }
             else {
                 const data = await response.json();
@@ -81,8 +84,6 @@ function Card() {
 
 
 
-
-
     return (
         <>
             <div className="card">
@@ -105,7 +106,6 @@ function Card() {
 
                 <div className="card-two">
                     <div className="img-box">
-                        {/* <img src="images/clear.png" alt='weather icon' /> */}
                         {content}
                     </div>
                     {/* Check if weatherData exists and has a weather array with at least one element */}
@@ -114,8 +114,9 @@ function Card() {
                     <hr className='first-hr' />
                     <div className="search">
                         <input type="text" placeholder='Enter city' value={searchVal} onChange={(evt) => setSearchVal(evt.target.value)} />
-                        <button onClick={() => getWeather(searchVal)} ><i className="fa-solid fa-magnifying-glass" style={{ color: `#fff` }}></i></button>
+                        <button onClick={handleClick} ><i className="fa-solid fa-magnifying-glass" style={{ color: `#fff` }}></i></button>
                     </div>
+                    {secErrorMsg ? (<p className="wrong-city">City Not Found</p>) : ('')}
                     {errorMsg && <p className='error'>{errorMsg}</p>}
                     <h3>{weatherData.name}, {weatherData.sys?.country}</h3>
                     <hr className="hr-gr" />

@@ -168,3 +168,6 @@ body {
     color: rgb(115, 5, 5);
     /* font-weight: 600; */
 }
+.wrong-city{
+    text-align: center;
+}
